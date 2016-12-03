@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<body>
+<div style="max-height: 800px;overflow: auto;" class="jumbotron">
+
+<section><!--id="ctaBg"-->
+	<div class="container">
+		<div class="col-md-4">
+			<h2>Management Services</h2>
+			<p>
+				Our knowledgable and professional staff can help you determine
+				what property management services are best you and your investment.
+			</p>
+			<a href="#">
+			<button class="btn btn-success">Learn More</button></a>
+		</div>
+		<div class="col-md-4 ctaBox">
+			<h2>Portfolio Management</h2>
+			<p>
+                Portfolio here
+    			</p>
+			<a href="#"><button class="btn btn-success">Contact Us</button></a>
+		</div>
+		<div class=" col-md-4 ctaBox">
+			<h2>Client Services</h2>
+			<p>
+				The management stands by the properties we rent. Our properties are clean, safe, and affordable for all types of budgets.
+			</p>
+			<a  href="#"><button class="btn btn-success">See Properties</button></a>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container">
+		<div id="contentBox">
+			<div class="col-md-8" id="messageContent">
+				<h2>Welcome</h2>
+				<p>
+                    We hope that you will avail yourselves of the amenities that
+                    we offer including the swimming pool, sauna room, gym and
+                    tennis court.
+                </p>
+
+
+			</div>
+			<div class="col-md-4" id="sideContent">
+				<h2>Current Properties</h2>
+				{%for property in properties%}
+				<div class="propertyBox">
+					<img src="{{property.image.url}}" alt="For Rent: {{property.property_location.address}} {{property.property_location.city}} {{property.property_location.state}} {{property.property_location.zip_code}}">
+					<p class="prop_title">{{property.property_location.address}}</p>
+					<p class="prop_text">{{property.property_location.description|truncatewords:10}}
+				 	<a href="{% url 'main:main_details' property.property_location.id %}">Learn More <i class="fa fa-caret-right" aria-hidden="true"></i><i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
+				</div>
+				{%endfor%}
+			</div>
+	</div>
+    </div>
+</section>
+</div>
+{% endblock content %}
