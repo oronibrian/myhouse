@@ -450,6 +450,12 @@ class CompanyDetail(models.Model):
     companyname = models.CharField(max_length=255)
     address =models.CharField(max_length=255)
     town =models.CharField(max_length=120)
-    contact = models.IntegerField()
+    admincontact = models.IntegerField()
+    staffcontact= models.IntegerField()
+    ownercontact = models.IntegerField()
     emailaddress = models.EmailField()
+
+    def __str__(self):
+         return u"{} - {}".format(self.companyname, self.address)
+
 
