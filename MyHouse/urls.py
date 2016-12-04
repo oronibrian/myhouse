@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import logout
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(url='homepage/', permanent=True)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^' ,include('Homepage.urls')),
+    url(r'^homepage/', include('MainSystem.urls')),
     url(r'^tenant/' ,include('TenantApp.urls')),
-    url(r'^tenant/login/$', 'django.contrib.auth.views.login',name='tenant_login'),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    url(r'^accounts/logout/$', lambda request: logout(request, '/'),name='logout'),
+    url(r'^contactus/',include('Contactus.urls')),
+    url(r'^vacancy/',include('Vacancy.urls')),
 
 ]

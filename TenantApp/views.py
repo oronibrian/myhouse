@@ -7,7 +7,7 @@ import datetime
 # Create your views here.
 @login_required
 def tenant(request):
-    template = loader.get_template('TenantApp/tenant.html')
+    template = loader.get_template('registration/tenant.html')
     context = {
         'today': datetime.datetime.now().date(),
 

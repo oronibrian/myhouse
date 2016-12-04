@@ -40,8 +40,9 @@ INSTALLED_APPS = (
     'lineage',
     'bootstrapform',
     #Install our apps
-    'Homepage',
+    'MainSystem',
     'TenantApp',
+    'Contactus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,6 +55,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+
 
 ROOT_URLCONF = 'MyHouse.urls'
 
@@ -106,5 +109,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "Homepage/static")
+STATIC_ROOT = os.path.join(BASE_DIR, "MainSystem/static")
 

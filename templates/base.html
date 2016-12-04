@@ -7,6 +7,10 @@
     <title>{% block title %}House management system{% endblock %}</title>
 	<!-- BootStrap CSS-->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    	<link rel="stylesheet" href="{% static 'css/template-style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'owl-carousel/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{% static 'owl-carousel/owl.theme.css'%}">
 	{%block customCSS%}
 
 		<link rel="stylesheet" href="{% static 'basepagestatics/css/responsee.css' %}">
@@ -30,7 +34,7 @@
                   <div class="top-nav s-12 l-10 right">
                      <p class="nav-text">House management system Menu</p>
                      <ul class="right">
-                        <li><a>Home</a></li>
+                        <li><a href="{% url 'index' %}">Home</a></li>
                         <li>
                            <a>Owner</a>
                            <ul>
@@ -41,20 +45,21 @@
                          <li>
                            <a>Staff</a>
                            <ul>
-                              <li><a>Login</a></li>
+                              <li><a href="/admin/">Login</a></li>
                            </ul>
                         </li>
                         <li>
                            <a>Tenant</a>
                            <ul>
-                              <li><a href="{% url 'tenant_login' %}">Login</a></li>
+                              <li><a href="{% url 'tenant' %}">Login</a></li>
                               <li><a>Booking</a></li>
                                <li><a href="{% url 'tenant' %}">Tenant Portal</a></li>
                            </ul>
                         </li>
-                         <li><a>Vacancy</a></li>
-                         <li><a>Contact</a></li>
+                         <li><a href="{% url 'vacancy' %}">Vacancy</a></li>
+                         <li><a href="{% url 'contactus' %}">Contact</a></li>
                         <li><a>About us</a></li>
+		                <li><a href="{% url 'logout' %}"></a></li>
                      </ul>
                   </div>
                </div>
