@@ -5,5 +5,6 @@ from .import views
 
 urlpatterns = [
     url(r'^$', views.tenant, name='tenant'),
+    #url(r'^tenant/(?P<tenant_id>\d+)/$', views.tenant, name="tenant"),
 
 ]

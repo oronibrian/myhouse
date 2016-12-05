@@ -1,5 +1,129 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 {% block content %}
+<div class="wrapper">
+ 	<div class="wrapperInner clearfix">
+        <ol id="menu">
+ 	<li><a href="#logo">Tenant Payment Detail's</a></li>
+ 	<li><a href="#in">Moving In Instructions</a></li>
+ 	<li><a href="#out">Moving Out Instructions</a></li>
+ 	<li><a href="#requestmaintenace">Maintenance Request</a></li>
+ 	<li><a href="#">Invoice download</a></li>
+
+ </ol>
+
+<div id="main">
+{% block styles %}
+<style>
+	.jqstooltip {
+		box-sizing: content-box;
+	}
+	tr.gone {
+		opacity: 0.6;
+	}
+</style>
+{% endblock %}
+<h3 id="logo">Tenant Payment Detail's</h3>
+    <p >
+    <table class="table table-condensed table-hover sortable">
+		<thead>
+			<tr>
+				<th>{% trans "tenant"|title %}</th>
+				<th>{% trans "property"|title %}</th>
+				<th>{% trans "balance"|title %}</th>
+				<th>{% trans "trend"|title %}</th>
+				<th>{% trans "actions"|title %}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for t in tenants %}
+		<tr class="{{ t.css }}">
+			<td>
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<a href="{% url 'admin:MainSystem_tenant_change' t.tenant.id %}">{{ t.tenant.name }}</a>
+				<a class="cashflows" href="{% url 'tenant_cashflows' t.tenant.id %}" id="cashflows">Cashflows</a>
+			</td>
+			<td>{{ t.tenant.property }}</td>
+			<td>{{ t.tenant.balance }} ksh</td>
+			<td>
+				<span class="trend" normal-min="{{ t.normal_min }}"> {{ t.trend }}</span>
+			</td>
+			<td>
+				<a href="{% url 'admin:MainSystem_tenantreminders_change' t.tenant.id %}" class="btn btn-default reminders {{t.reminder_css}}">
+                    <span class="glyphicon glyphicon-bullhorn"></span> {% trans "reminders"|title %} - {{t.reminders_count}}</a>
+		       	</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% block scripts %}
+<script src="{% static "js/sorttable.js" %}"></script>
+<script src="{% static "js/jquery.sparkline.min.js" %}"></script>
+<script>
+	//expand on click
+	$('a.cashflows').hide();
+	$('tbody tr').click(function(event) {
+		if ($(event.target).is('button,a') || $(event.target).parents('button,a').size() > 0) {
+			return;
+		}
+		var collapse = $(this).hasClass('cashflows-expanded');
+		$(this).toggleClass('cashflows-expanded', !collapse)
+		.find('.glyphicon').first()
+			.toggleClass('glyphicon-chevron-down', !collapse)
+			.toggleClass('glyphicon-chevron-right', collapse);
+		if (collapse) {
+			$(this).next('tr').remove();
+		} else {
+			var tr = $('<tr>').insertAfter(this);
+			//big colspan to take all columns
+			var td = $('<td colspan="20">Loading...</td>')
+			.appendTo(tr)
+			.load($(this).find('a.cashflows').attr('href'));
+		}
+	});
+	$('.trend').each(function() {
+			var normalMin = JSON.parse($(this).attr('normal-min'));
+			var trend = JSON.parse($(this).text());
+			$(this).sparkline(trend, {
+				width: '50px',
+				height: '30px',
+				normalRangeMax: 0,
+				normalRangeMin: -normalMin,
+				fillColor: false
+			});
+	});
+</script>
+{% endblock %}
+    </p>
+
+<h3 id="in">Moving In Instruction</h3>
+<p>Booker comes with a default area for Call to Action text or Headlines. A main heading, sub heading and feature button are provided. To update these look in the HTML for; </p>
+<pre> <- Start Call To Action -> </pre>
+<p>And replace the existing headline with your own compelling text. Remember to update the href="#Your Link Here" with your actual link to the downloadable eBook.</p>
+
+
+
+<h1 id="out">Moving Out Instruction</h1>
+
+
+<h3>Changing Book Cover Images</h3>
+<p>The book cover artwork can be simply updated in the supplied PSD file. Open it and go to the Head Section and then Books layer group. Here you will find 5 layers labeled 1 Book Cover, 1 Book Back, 2 Book Cover and so on. These layers are smart object layers and are turned off by default. Double click on the desired Book Cover layer, this activates the smart object in a new window. In the smart object window, paste your own cover image making sure to fill the complete area, save and close this window, and the Book cover will be updated. </p>
+
+<p><h6>Note:</h6> the Book Back layers are shape layers with no artwork included. They are only intended to be colored layers to match the Cover color. To update these, double click on the Book Back layer to open in the smart object window, then double click again to bring up the color changer, now change to match the color of the front cover, save and close.</p>
+
+
+<p><h6>Note:</h6> Being optimised for all devices, this theme uses 2 separate book images, one for wide displays and one for handheld displays. See the change when you resize your browser window. Be sure to update both versions of these images.</p>
+
+
+
+<h3 id="requestmaintenace">Maintenance Request</h3>
+<p>In the HTML look for the comments labelled <pre><- Call Out  -></pre> and change the filler text to your own awesome quotes / testimonials. Call outs can have "highlights" or "quoted by" styles. Examples of both below:</p>
+<pre>&lt;span> Highlighted Text &lt;/span></pre>
+
+
+</div>
+</div>
+</div>
 
 {% endblock content  %}

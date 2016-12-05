@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load lineage %}
+{% load staticfiles %}
+<div style="max-height: 400px;overflow: auto;">
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				{% comment %}Translators: this is a cashflow type{% endcomment %}
+				<th>{% trans "type"|title %}</th>
+				<th>{% trans "date"|title %}</th>
+				<th>{% trans "amount"|title %}</th>
+				<th>{% trans "balance"|title %}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for cashflow in cashflows %}
+		<tr>
+			<td>{{cashflow.description}}</td>
+			<td>{{cashflow.date}}</td>
+			<td>{{cashflow.amount}} ksh</td>
+			<td>{{cashflow.balance}} ksh</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

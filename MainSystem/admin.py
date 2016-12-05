@@ -5,8 +5,6 @@ from django.core import urlresolvers
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from MainSystem.models import  CompanyDetail
-
 
 class BuildingFileInline(admin.TabularInline):
     model = models.BuildingFile
@@ -29,7 +27,7 @@ class PropertyAdmin(admin.ModelAdmin):
         if obj.building is None:
             return _('No associated building')
         url = urlresolvers.reverse(
-            'admin:main_building_change', args=(obj.building.id,))
+            'admin:MainSystem_building_change', args=(obj.building.id,))
         return format_html(u'<a href={}>{}</a>', mark_safe(url), obj.building)
     building_link.short_description = _('link to the building')
     readonly_fields = ('building_link',)
@@ -76,7 +74,7 @@ class TenantAdmin(admin.ModelAdmin):
 
     def property_link(self, obj):
         url = urlresolvers.reverse(
-            'admin:main_property_change', args=(obj.property.id,))
+            'admin:MainSystem_property_change', args=(obj.property.id,))
         return format_html(u'<a href={}>{}</a>', mark_safe(url), obj.property)
     property_link.short_description = _('link to the property')
 
@@ -107,4 +105,5 @@ admin.site.register(models.Building, BuildingAdmin)
 admin.site.register(models.Property, PropertyAdmin)
 admin.site.register(models.Tenant, TenantAdmin)
 admin.site.register(TenantReminders, TenantRemindersAdmin)
-admin.site.register(CompanyDetail)
+
+admin.site.register(models.CompanyDetail)

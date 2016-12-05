@@ -1,62 +1,70 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<body>
-<div style="max-height: 800px;overflow: auto;" class="jumbotron">
 
-<section><!--id="ctaBg"-->
-	<div class="container">
-		<div class="col-md-4">
-			<h2>Management Services</h2>
-			<p>
-				Our knowledgable and professional staff can help you determine
-				what property management services are best you and your investment.
-			</p>
-			<a href="#">
-			<button class="btn btn-success">Learn More</button></a>
-		</div>
-		<div class="col-md-4 ctaBox">
-			<h2>Portfolio Management</h2>
-			<p>
-                Portfolio here
-    			</p>
-			<a href="#"><button class="btn btn-success">Contact Us</button></a>
-		</div>
-		<div class=" col-md-4 ctaBox">
-			<h2>Client Services</h2>
-			<p>
-				The management stands by the properties we rent. Our properties are clean, safe, and affordable for all types of budgets.
-			</p>
-			<a  href="#"><button class="btn btn-success">See Properties</button></a>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="container">
-		<div id="contentBox">
-			<div class="col-md-8" id="messageContent">
-				<h2>Welcome</h2>
-				<p>
-                    We hope that you will avail yourselves of the amenities that
-                    we offer including the swimming pool, sauna room, gym and
-                    tennis court.
-                </p>
+    <!-- MAIN -->
+    <main role="main">
+      <!-- Content -->
+      <article>
+        <div class="section background-white">
+          <div class="line">
+            <div class="margin text-center">
+              <div class="s-12 m-12 l-4 margin-bottom">
+                <div class="padding-2x block-bordered border-radius">
+                  <i class="icon-paperplane_ico icon2x text-primary margin-bottom-30"></i>
+                  <h2 class="text-thin">Apartment</h2>
+                  <p class="margin-bottom-30">
+                  This modern inner-city apartment offers residents everything
+                      they need to move in and start enjoying living in the heart of popular Cuba Street District .
+</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                </div>
+              </div>
+              <div class="s-12 m-12 l-4 margin-bottom">
+                <div class="padding-2x block-bordered border-radius">
+                  <i class="icon-display_screen icon2x text-primary margin-bottom-30"></i>
+                  <h2 class="text-thin">Responsive</h2>
+                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                </div>
+              </div>
+              <div class="s-12 m-12 l-4 margin-bottom">
+                <div class="padding-2x block-bordered border-radius">
+                  <i class="icon-heart icon2x text-primary margin-bottom-30"></i>
+                  <h2 class="text-thin">Intuitive</h2>
+                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                </div>
+              </div>
+              <div class="s-12 m-12 l-4 margin-bottom">
+                <div class="padding-2x block-bordered border-radius">
+                  <i class="icon-attachment icon2x text-primary margin-bottom-30"></i>
+                  <h2 class="text-thin">Useful</h2>
+                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                </div>
+              </div>
+              <div class="s-12 m-12 l-4 margin-bottom">
+                <div class="padding-2x block-bordered border-radius">
+                  <i class="icon-reorder icon2x text-primary margin-bottom-30"></i>
+                  <h2 class="text-thin">Responsive navigation</h2>
+                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                </div>
+              </div>
+              <div class="s-12 m-12 l-4">
+                <div class="padding-2x block-bordered border-radius">
+                  <i class="icon-mail icon2x text-primary margin-bottom-30"></i>
+                  <h2 class="text-thin">Responsive components</h2>
+                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
+        </div>
+      </article>
+    </main>
 
-			</div>
-			<div class="col-md-4" id="sideContent">
-				<h2>Current Properties</h2>
-				{%for property in properties%}
-				<div class="propertyBox">
-					<img src="{{property.image.url}}" alt="For Rent: {{property.property_location.address}} {{property.property_location.city}} {{property.property_location.state}} {{property.property_location.zip_code}}">
-					<p class="prop_title">{{property.property_location.address}}</p>
-					<p class="prop_text">{{property.property_location.description|truncatewords:10}}
-				 	<a href="{% url 'main:main_details' property.property_location.id %}">Learn More <i class="fa fa-caret-right" aria-hidden="true"></i><i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
-				</div>
-				{%endfor%}
-			</div>
-	</div>
-    </div>
-</section>
-</div>
-{% endblock content %}
+{% endblock content  %}

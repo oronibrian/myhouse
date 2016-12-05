@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'MainSystem',
     'TenantApp',
     'Contactus',
+    'Vacancy',
+    'Adminportal'
 )
 
 MIDDLEWARE_CLASSES = (

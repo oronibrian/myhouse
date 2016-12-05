@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}House management system{% endblock %}</title>
+<title>{% block title %}House management system Login Panel{% endblock %}</title>
 <!-- Bootstrap -->
 <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
 
@@ -21,8 +21,7 @@
 </head >
 <body>
 <nav class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-	<a href="/" class="navbar-brand"> <center>House Management System</center></a>
+<div class="navbar-header"><a href="{% url 'index' %}">Home</a>
 </div>
 </nav>
 <div class="container">

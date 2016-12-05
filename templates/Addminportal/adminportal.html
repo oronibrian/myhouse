@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load lineage %}
+{% load i18n %}
+{% load static %}
+{% block styles %}
+{% load static %}
+<style>
+	.jqstooltip {
+		box-sizing: content-box;
+	}
+	tr.gone {
+		opacity: 0.6;
+	}
+</style>
+{% endblock %}
+{% block content %}
+	<table class="table table-condensed table-hover sortable">
+		<thead>
+			<tr>
+				<th>{% trans "tenant"|title %}</th>
+				<th>{% trans "property"|title %}</th>
+				<th>{% trans "balance"|title %}</th>
+				<th>{% trans "trend"|title %}</th>
+				<th>{% trans "actions"|title %}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for t in tenants %}
+		<tr class="{{ t.css }}">
+			<td>
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<a href="{% url 'admin:MainSystem_tenant_change' t.tenant.id %}">{{ t.tenant.name }}</a>
+				<a class="cashflows" href="{% url 'tenant_cashflows' t.tenant.id %}" id="cashflows">Cashflows</a>
+			</td>
+			<td>{{ t.tenant.property }}</td>
+			<td>{{ t.tenant.balance }} ksh</td>
+			<td>
+				<span class="trend" normal-min="{{ t.normal_min }}"> {{ t.trend }}</span>
+			</td>
+			<td>
+				<a href="{% url 'admin:MainSystem_tenantreminders_change' t.tenant.id %}" class="btn btn-default reminders {{t.reminder_css}}">
+                    <span class="glyphicon glyphicon-bullhorn"></span> {% trans "reminders"|title %} - {{t.reminders_count}}</a>
+		       	</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+
+    <style>
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
+	background:-moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9',GradientType=0);
+	background-color:#f9f9f9;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9));
+	background:-moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-o-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9',GradientType=0);
+	background-color:#e9e9e9;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+    </style>
+
+    <a href="/admin/" class="myButton">Administration</a>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static "js/sorttable.js" %}"></script>
+<script src="{% static "js/jquery.sparkline.min.js" %}"></script>
+<script>
+	//expand on click
+	$('a.cashflows').hide();
+	$('tbody tr').click(function(event) {
+		if ($(event.target).is('button,a') || $(event.target).parents('button,a').size() > 0) {
+			return;
+		}
+		var collapse = $(this).hasClass('cashflows-expanded');
+		$(this).toggleClass('cashflows-expanded', !collapse)
+		.find('.glyphicon').first()
+			.toggleClass('glyphicon-chevron-down', !collapse)
+			.toggleClass('glyphicon-chevron-right', collapse);
+		if (collapse) {
+			$(this).next('tr').remove();
+		} else {
+			var tr = $('<tr>').insertAfter(this);
+			//big colspan to take all columns
+			var td = $('<td colspan="20">Loading...</td>')
+			.appendTo(tr)
+			.load($(this).find('a.cashflows').attr('href'));
+		}
+	});
+	$('.trend').each(function() {
+			var normalMin = JSON.parse($(this).attr('normal-min'));
+			var trend = JSON.parse($(this).text());
+			$(this).sparkline(trend, {
+				width: '50px',
+				height: '30px',
+				normalRangeMax: 0,
+				normalRangeMin: -normalMin,
+				fillColor: false
+			});
+	});
+</script>
+{% endblock %}
