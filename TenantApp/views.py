@@ -5,6 +5,7 @@ from django.template import loader
 from django.http import HttpResponse
 import datetime
 from MainSystem.models import Tenant
+from  TenantApp.models import MovingInInstructions,MovingOutInstructions
 
 # Create your views here.
 
@@ -12,7 +13,12 @@ from MainSystem.models import Tenant
 @login_required
 def tenant(request):
     template = loader.get_template('TenantApp/tenant.html')
+
     result = []
+    movinininstruction = MovingInInstructions.objects.get()
+    movingoutinstruction = MovingOutInstructions.objects.get()
+
+
     tenants = (
         Tenant.objects.all()
             .prefetch_related('reminder_set'))
@@ -44,7 +50,11 @@ def tenant(request):
             "reminder_css": reminder_css,
             "reminders_count": reminders_count
         })
-    context = {'tenants': result}
+    context = {'tenants': result,
+               'movinininstruction': movinininstruction,
+               'movingoutinstruction':movingoutinstruction
+
+               }
     return HttpResponse(template.render(context, request))
 
 @login_required
@@ -52,3 +62,4 @@ def tenant_cashflows(request, tenant_id):
     tenant = get_object_or_404(Tenant, pk=tenant_id)
     context = {'cashflows': tenant.cashflows()}
     return render(request, 'TenantApp/cashflows.html', context)
+

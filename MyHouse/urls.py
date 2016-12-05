@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^accounts/logout/$', views.logout),
     url(r'^contactus/',include('Contactus.urls')),
     url(r'^vacancy/',include('Vacancy.urls')),
-    url(r'^adminprtal',include('Adminportal.urls'))
+    url(r'^adminprtal',include('Adminportal.urls')),
+
+    url(r'^accounts/',include('tenantprofile.urls'))
 
 ]

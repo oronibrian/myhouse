@@ -8,7 +8,6 @@
  	<li><a href="#logo">Tenant Payment Detail's</a></li>
  	<li><a href="#in">Moving In Instructions</a></li>
  	<li><a href="#out">Moving Out Instructions</a></li>
- 	<li><a href="#requestmaintenace">Maintenance Request</a></li>
  	<li><a href="#">Invoice download</a></li>
 
  </ol>
@@ -98,26 +97,18 @@
     </p>
 
 <h3 id="in">Moving In Instruction</h3>
-<p>Booker comes with a default area for Call to Action text or Headlines. A main heading, sub heading and feature button are provided. To update these look in the HTML for; </p>
-<pre> <- Start Call To Action -> </pre>
-<p>And replace the existing headline with your own compelling text. Remember to update the href="#Your Link Here" with your actual link to the downloadable eBook.</p>
+    <p><h4>{{ movinininstruction }}</h4></p>
 
 
 
 <h1 id="out">Moving Out Instruction</h1>
 
 
-<h3>Changing Book Cover Images</h3>
-<p>The book cover artwork can be simply updated in the supplied PSD file. Open it and go to the Head Section and then Books layer group. Here you will find 5 layers labeled 1 Book Cover, 1 Book Back, 2 Book Cover and so on. These layers are smart object layers and are turned off by default. Double click on the desired Book Cover layer, this activates the smart object in a new window. In the smart object window, paste your own cover image making sure to fill the complete area, save and close this window, and the Book cover will be updated. </p>
-
-<p><h6>Note:</h6> the Book Back layers are shape layers with no artwork included. They are only intended to be colored layers to match the Cover color. To update these, double click on the Book Back layer to open in the smart object window, then double click again to bring up the color changer, now change to match the color of the front cover, save and close.</p>
-
-
-<p><h6>Note:</h6> Being optimised for all devices, this theme uses 2 separate book images, one for wide displays and one for handheld displays. See the change when you resize your browser window. Be sure to update both versions of these images.</p>
+<p><h4>{{ movingoutinstruction }}</h4></p>
 
 
 
-<h3 id="requestmaintenace">Maintenance Request</h3>
+<h3 id="Invoce">Invoce</h3>
 <p>In the HTML look for the comments labelled <pre><- Call Out  -></pre> and change the filler text to your own awesome quotes / testimonials. Call outs can have "highlights" or "quoted by" styles. Examples of both below:</p>
 <pre>&lt;span> Highlighted Text &lt;/span></pre>
 
