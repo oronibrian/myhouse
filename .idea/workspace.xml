@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6d5378b-4121-454d-b438-afd889af3a1d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/profilebase.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/tenantprofile/profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenantprofile/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenantprofile/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyHouse/settings.py" afterPath="$PROJECT_DIR$/MyHouse/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyHouse/urls.py" afterPath="$PROJECT_DIR$/MyHouse/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TenantApp/admin.py" afterPath="$PROJECT_DIR$/TenantApp/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TenantApp/models.py" afterPath="$PROJECT_DIR$/TenantApp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TenantApp/views.py" afterPath="$PROJECT_DIR$/TenantApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/TenantApp/tenant.html" afterPath="$PROJECT_DIR$/templates/TenantApp/tenant.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Vacancy/vacancy.html" afterPath="$PROJECT_DIR$/templates/Vacancy/vacancy.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -572,7 +560,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480926391295</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commt 11">
+      <created>1480945001859</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1480945001859</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -621,7 +616,8 @@
     <MESSAGE value="contact messages modell&#10;" />
     <MESSAGE value="font size" />
     <MESSAGE value="commt 10" />
-    <option name="LAST_COMMIT_MESSAGE" value="commt 10" />
+    <MESSAGE value="commt 11" />
+    <option name="LAST_COMMIT_MESSAGE" value="commt 11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
