@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.contrib.auth import logout
 from django.views.generic import RedirectView
 from MainSystem import views
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
 
 admin.autodiscover()
 
@@ -17,6 +19,10 @@ urlpatterns = [
     url(r'^vacancy/',include('Vacancy.urls')),
     url(r'^adminprtal',include('Adminportal.urls')),
 
-    url(r'^accounts/',include('tenantprofile.urls'))
+    url('^register/', CreateView.as_view(
+        template_name='registration/registeruser.html',
+        form_class=UserCreationForm,
+        success_url='homepage/'
+    )),
 
 ]

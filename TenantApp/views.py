@@ -6,6 +6,7 @@ from django.http import HttpResponse
 import datetime
 from MainSystem.models import Tenant
 from  TenantApp.models import MovingInInstructions,MovingOutInstructions
+from  django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -18,9 +19,11 @@ def tenant(request):
     movinininstruction = MovingInInstructions.objects.get()
     movingoutinstruction = MovingOutInstructions.objects.get()
 
-
+    username = request.user.username
+    print(username)
     tenants = (
-        Tenant.objects.all()
+        Tenant.objects.all().filter(name=username)
+
             .prefetch_related('reminder_set'))
     for t in tenants:
         rounded_trend = [round(v, 2) for v in t.trend()]

@@ -16,6 +16,16 @@ def index(request):
 
     return HttpResponse(template.render(context,request))
 
-def logout(requestt):
-    auth.logout(requestt)
+def logout(request):
+    auth.logout(request)
     return render_to_response('Homepage/homepage.html')
+
+
+def register(request):
+    template = loader.get_template('registration/registeruser.html')
+    context = {
+        'today': datetime.datetime.now().date(),
+
+    }
+
+    return HttpResponse(template.render(context, request))
