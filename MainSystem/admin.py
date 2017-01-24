@@ -11,8 +11,10 @@ class BuildingFileInline(admin.TabularInline):
 
 
 class BuildingAdmin(admin.ModelAdmin):
-    list_display = ('name', 'property_count')
+    list_display = ('name', 'property_count','notes')
+    list_filter = ('name','notes')
     inlines = [BuildingFileInline]
+    search_fields = ('name','notes')
 
 
 class PropertyFileInline(admin.TabularInline):
@@ -21,6 +23,10 @@ class PropertyFileInline(admin.TabularInline):
 
 class PropertyAdmin(admin.ModelAdmin):
     list_display = ('name', 'address', 'building')
+    search_fields = ('name','address','building')
+    list_filter = ('name','building')
+
+
     inlines = [PropertyFileInline]
 
     def building_link(self, obj):
@@ -62,6 +68,8 @@ class DiscountInline(admin.TabularInline):
 
 class TenantAdmin(admin.ModelAdmin):
     list_display = ('name', 'balance')
+    search_fields = ('name','property')
+
     inlines = [
         RentRevisionInline,
         FeeInline,
@@ -100,10 +108,12 @@ class TenantRemindersAdmin(admin.ModelAdmin):
         ReminderInline,
     ]
 
+class CompanyDetail(admin.ModelAdmin):
+    list_display = ('companyname','address','town')
 
 admin.site.register(models.Building, BuildingAdmin)
 admin.site.register(models.Property, PropertyAdmin)
 admin.site.register(models.Tenant, TenantAdmin)
 admin.site.register(TenantReminders, TenantRemindersAdmin)
 
-admin.site.register(models.CompanyDetail)
+admin.site.register(models.CompanyDetail,CompanyDetail)
