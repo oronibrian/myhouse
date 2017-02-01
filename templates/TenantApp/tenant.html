@@ -8,7 +8,7 @@
  	<li><a href="#logo">Tenant Payment Detail's</a></li>
  	<li><a href="#in">Moving In Instructions</a></li>
  	<li><a href="#out">Moving Out Instructions</a></li>
- 	<li><a href="#">Invoice download</a></li>
+ 	<li><a href="{% url 'myinvoice'%}">View Invoice</a></li>
 
  </ol>
 
@@ -97,20 +97,15 @@
     </p>
 
 <h3 id="in">Moving In Instruction</h3>
-    <p><h4>{{ movinininstruction }}</h4></p>
+    <p>{{ movinininstruction }}</p>
 
 
 
-<h1 id="out">Moving Out Instruction</h1>
+<h3 id="out">Moving Out Instruction</h3>
 
 
-<p><h4>{{ movingoutinstruction }}</h4></p>
+<p>{{ movingoutinstruction }}</p>
 
-
-
-<h3 id="Invoce">Invoce</h3>
-<p>In the HTML look for the comments labelled <pre><- Call Out  -></pre> and change the filler text to your own awesome quotes / testimonials. Call outs can have "highlights" or "quoted by" styles. Examples of both below:</p>
-<pre>&lt;span> Highlighted Text &lt;/span></pre>
 
 
 </div>

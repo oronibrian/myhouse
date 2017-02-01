@@ -20,9 +20,10 @@ def tenant(request):
     movingoutinstruction = MovingOutInstructions.objects.get()
 
     username = request.user.username
+    firstname = request.user.first_name
     print(username)
     tenants = (
-        Tenant.objects.all().filter(name=username)
+        Tenant.objects.all().filter(username=username)
 
             .prefetch_related('reminder_set'))
     for t in tenants:

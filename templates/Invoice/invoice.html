@@ -1,0 +1,80 @@
+<!doctype html>
+{% load lineage %}
+{% load i18n %}
+{% load static %}
+<html lang="en">
+{% for tenantdetail in tenantDetails %}
+
+  <head>
+    <meta charset="utf-8">
+    <title>{{ comp_name }} invoice</title>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}" media="all">
+
+  </head>
+
+                  <body>
+                    <header class="clearfix">
+                      <div id="logo">
+                        <img src="{% static 'assets/logo.png' %}">
+                      </div>
+                      <h1>{{ comp_name }} invoice </h1>
+                      <div id="company" class="clearfix">
+                        <div>{{ comp_name }}</div>
+                        <div>{{ address }},<br /> {{ town }}, Kenya</div>
+                        <div>{{ phone }}</div>
+                        <div><a href="mailto:company@example.com">{{ mail }}</a></div>
+                      </div>
+
+
+                            <div id="project">
+                                <div><span>CLIENT</span> {{ tenantdetail.name }}</div>
+                                <div><span>ADDRESS</span>{{ tenantdetail.contact_info }}</div>
+                                <div><span>PROPERTY</span>{{ tenantdetail.property }}</div>
+                                <div><span>DATE</span> {{ today }}</div>
+                                <div><span>DUE DATE</span> {{ today }} + 4 days</div>
+                            </div>
+
+
+
+
+                    </header>
+                    <main>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th class="service">BILL</th>
+                            <th class="desc">DESCRIPTION</th>
+                            <th>MONTHLY AMOUNT</th>
+                            <th></th>
+                            <th>TOTAL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="service">Rent</td>
+                            <td class="desc">Monthly rental dues</td>
+                            <td class="unit">ksh {{ tenantdetail.rent }}</td>
+                            <td class="qty"></td>
+                            <td class="total">ksh {{ tenantdetail.rent }}</td>
+                          </tr>
+
+                          <tr>
+                            <td colspan="4">MONTHLY PROVISION </td>
+                            <td class="total">ksh {{ tenantdetail.balance }}</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4" class="grand total">GRAND TOTAL</td>
+                            <td class="grand total">ksh 6,500.00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div id="notices">
+                        <div>NOTICE:</div>
+                        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.<br>
+                                              Invoice was created on a computer and is valid without the signature and seal.</div>
+                      </div>
+                    </main>
+                  </body>
+		{% endfor %}
+
+</html>

@@ -1,10 +1,29 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
+{% load static   %}
 
     <!-- MAIN -->
     <main role="main">
       <!-- Content -->
+          <section class="main-gallery" id="home">
+    <div class="overlay">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 text-center">
+                 <h1 class="text-capitalize bigFont" data-scroll-reveal="wait 0.45s, then enter top and move 80px over 1s">Discover the Features In Our Properties</h1>
+
+                <p class="intro" data-scroll-reveal="wait 0.45s, then enter left and move 80px over 1s">Get early access to over 100 unit rooms each month.</p>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+
+  </section>
+
+
       <article>
         <div class="section background-white">
           <div class="line">
@@ -12,59 +31,49 @@
               <div class="s-12 m-12 l-4 margin-bottom">
                 <div class="padding-2x block-bordered border-radius">
                   <i class="icon-paperplane_ico icon2x text-primary margin-bottom-30"></i>
-                  <h2 class="text-thin">Apartment</h2>
+                  <h2 class="text-thin">Apartment 1</h2>
+                    <img src=" {% static 'img/house2.jpg' %}" width="10" height="10"  alt="House" style="width:100%">
+
                   <p class="margin-bottom-30">
                   This modern inner-city apartment offers residents everything
                       they need to move in and start enjoying living in the heart of popular Cuba Street District .
 </p>
-                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="{% url 'vacancy' %}">GET MORE INFO</a>
                 </div>
               </div>
               <div class="s-12 m-12 l-4 margin-bottom">
                 <div class="padding-2x block-bordered border-radius">
                   <i class="icon-display_screen icon2x text-primary margin-bottom-30"></i>
-                  <h2 class="text-thin">Responsive</h2>
-                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
-                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                  <h2 class="text-thin">Apartment 2</h2>
+                   <img src=" {% static 'img/house.png' %}" width="10" height="10"  alt="House" style="width:100%">
+
+                  <p class="margin-bottom-30">Fully Furnished Apartment available in the popular student block known as Varsity Villa's.
+                      <br>The apartment is in a secure building, great location, and walking distance to everything needed.</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="{% url 'vacancy' %}">GET MORE INFO</a>
                 </div>
               </div>
               <div class="s-12 m-12 l-4 margin-bottom">
                 <div class="padding-2x block-bordered border-radius">
                   <i class="icon-heart icon2x text-primary margin-bottom-30"></i>
-                  <h2 class="text-thin">Intuitive</h2>
-                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
-                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
+                  <h2 class="text-thin">Apartment 3</h2>
+                 <img src=" {% static 'img/house2.jpg' %}" width="10" height="10"  alt="House" style="width:100%">
+
+                  <p class="margin-bottom-30">Redecorated 3 bedroom, 1 bathroom flat. Situated in a lovely sunny location upstairs. This flat offers the following;
+
+                                                * Repainted throughout
+                                                * Heat pump brand new
+                                                * 3 generous sized double bedrooms</p>
+                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="{% url 'vacancy' %}">GET MORE INFO</a>
                 </div>
               </div>
-              <div class="s-12 m-12 l-4 margin-bottom">
-                <div class="padding-2x block-bordered border-radius">
-                  <i class="icon-attachment icon2x text-primary margin-bottom-30"></i>
-                  <h2 class="text-thin">Useful</h2>
-                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
-                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
-                </div>
-              </div>
-              <div class="s-12 m-12 l-4 margin-bottom">
-                <div class="padding-2x block-bordered border-radius">
-                  <i class="icon-reorder icon2x text-primary margin-bottom-30"></i>
-                  <h2 class="text-thin">Responsive navigation</h2>
-                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
-                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
-                </div>
-              </div>
-              <div class="s-12 m-12 l-4">
-                <div class="padding-2x block-bordered border-radius">
-                  <i class="icon-mail icon2x text-primary margin-bottom-30"></i>
-                  <h2 class="text-thin">Responsive components</h2>
-                  <p class="margin-bottom-30">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
-                  <a class="button border-radius background-primary text-size-12 text-white text-strong" href="/">GET MORE INFO</a>
-                </div>
-              </div>
+
             </div>
           </div>
 
         </div>
       </article>
+
     </main>
+
 
 {% endblock content  %}

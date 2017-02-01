@@ -3,33 +3,41 @@
 {% block content %}
     {% load static  %}
 
+
+                <style>
+
+                div.vacancy {
+                background-color: floralwhite;
+                color: white;
+                margin: 20px 0 20px 0;
+                padding: 20px;
+}
+
+            </style>
+
     <!-- MAIN -->
       <!-- Content -->
-    <table style="width:100%">
-      <thead>
-			<tr>
-				{% comment %}Translators: this is a cashflow type{% endcomment %}
-				<th>{% trans "Vacant House"|title %}</th>
-			</tr>
-		</thead>
-		<tbody>
+
+         <h2> {% trans "Vacant Houses"|title %}</h2>
+
 		{% for vacant in vacancies %}
-		<tr>
-			<h3><td> <div class="w3-container w3-center">
+
+			 <h3> <div class="vacancy">
                       <h3>{{ vacant.housetitle }}</h3>
-                      <img src=" {% static 'img/house.png' %}" width="50" height="20"  alt="House" style="width:80%">
+                      <img src=" {% static 'img/house.png' %}" width="10" height="10"  alt="House" style="width:25%" align="center">
                       <h5>{{vacant.housedescription}}</h5>
                        <h6>Vacant Rooms:{{vacant.roomsvacant}}</h6>
-                <button class="w3-btn w3-green" href="#">Book House</button>
+                      <a class="button border-radius background-primary text-size-12 text-white text-strong" href="{% url 'sendbooking' %}">Book House</a>
+
                     </div>
-            </td>
-            </h3>
 
-		</tr>
+                 </h3>
+
+
+
+
 		{% endfor %}
-        </tbody>
 
-</table >
 
 
 {% endblock content  %}

@@ -107,7 +107,8 @@ class Tenant(models.Model):
             'It is payed back in full on the final day of the tenancy'),
         validators=[MinValueValidator(0)], default=0)
     contact_info = models.TextField(_("contact info"), blank=True)
-    notes = models.TextField(_("notes"), blank=True)
+    notes = models.TextField(_("notes"), blank=True),
+    username = models.CharField(max_length=255, default="me")
 
     def cashflows(self, date_until=None):
         if date_until is None:

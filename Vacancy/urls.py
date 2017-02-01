@@ -4,5 +4,6 @@ from .import views
 
 urlpatterns = [
     url(r'^$', views.vacancy, name='vacancy'),
+    url(r'^sendbooking/$', views.booking, name='sendbooking')
 
 ]

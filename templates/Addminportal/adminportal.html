@@ -13,6 +13,8 @@
 	}
 </style>
 {% endblock %}
+
+
 {% block content %}
 	<table class="table table-condensed table-hover sortable">
 		<thead>
@@ -92,6 +94,8 @@
     </style>
 
     <a href="/admin/" class="myButton">Administration</a>
+    <a href="{% url 'invoice' %} " class="myButton">Make Invoice</a>
+
 
 {% endblock %}
 {% block scripts %}

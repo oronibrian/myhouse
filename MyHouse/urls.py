@@ -17,7 +17,8 @@ urlpatterns = [
     url(r'^accounts/logout/$', views.logout),
     url(r'^contactus/',include('Contactus.urls')),
     url(r'^vacancy/',include('Vacancy.urls')),
-    url(r'^adminprtal',include('Adminportal.urls')),
+    url(r'^adminprtal/',include('Adminportal.urls')),
+
 
     url('^register/', CreateView.as_view(
         template_name='registration/registeruser.html',
@@ -25,4 +26,11 @@ urlpatterns = [
         success_url='homepage/'
     )),
 
+
+
 ]
+
+# Change admin look
+
+admin.site.site_header = ("My House Management System")
+admin.site.site_title= "My House System Admin"

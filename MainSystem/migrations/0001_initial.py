@@ -38,6 +38,19 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='CompanyDetail',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('companyname', models.CharField(max_length=255)),
+                ('address', models.CharField(max_length=255)),
+                ('town', models.CharField(max_length=120)),
+                ('admincontact', models.IntegerField()),
+                ('staffcontact', models.IntegerField()),
+                ('ownercontact', models.IntegerField()),
+                ('emailaddress', models.EmailField(max_length=254)),
+            ],
+        ),
+        migrations.CreateModel(
             name='Discount',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -162,6 +175,7 @@ class Migration(migrations.Migration):
                 ('deposit', models.DecimalField(decimal_places=2, default=0, max_digits=7, validators=[django.core.validators.MinValueValidator(0)], help_text='A sum of money asked to tenant on day 1. It is payed back in full on the final day of the tenancy', verbose_name='deposit')),
                 ('contact_info', models.TextField(verbose_name='contact info', blank=True)),
                 ('notes', models.TextField(verbose_name='notes', blank=True)),
+                ('username', models.CharField(default=b'me', max_length=255)),
                 ('property', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, verbose_name='property', to='MainSystem.Property')),
             ],
             options={
