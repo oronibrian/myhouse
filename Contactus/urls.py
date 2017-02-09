@@ -5,5 +5,6 @@ from .import views
 
 urlpatterns = [
     url(r'^$', views.ContactUs, name='contactus'),
+    url(r'^sendrequest/$', views.SendRequest, name='sendrequest'),
 
 ]

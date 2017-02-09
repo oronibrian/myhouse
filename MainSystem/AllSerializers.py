@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Building,Property, Tenant
+from .models import Building,Property, Tenant, CompanyDetail
 
 
 class BuildingSerializer(ModelSerializer):
@@ -40,5 +40,22 @@ class TenantSerializer(ModelSerializer):
 
 
         ]
+
+class CompanyDetailSerializer(ModelSerializer):
+    class Meta:
+        model = CompanyDetail
+        fields = [
+            'id',
+            'companyname',
+            'address',
+            'town',
+            'admincontact',
+            'staffcontact',
+            'ownercontact',
+            'emailaddress',
+
+
+         ]
+
 
 

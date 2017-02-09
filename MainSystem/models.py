@@ -163,21 +163,21 @@ class Tenant(models.Model):
             result = 0
         return result
 
-# Translators: This is the balance of the tenant's payments
+    # Translators: This is the balance of the tenant's payments
     balance.short_description = _("balance")
 
     def expired_reminders_count(self):
         return (
             self.reminder_set
-            .filter(read=False)
-            .filter(date__lte=date.today())
-            .count())
+                .filter(read=False)
+                .filter(date__lte=date.today())
+                .count())
 
     def pending_reminders_count(self):
         return (
             self.reminder_set
-            .filter(read=False)
-            .count())
+                .filter(read=False)
+                .count())
 
     class Meta:
         verbose_name = _("tenant")
@@ -339,8 +339,8 @@ def payments_to_cashflows(
 
 
 def first_of_month_range(start_date, end_date):
-    start_index = 12*start_date.year + start_date.month
-    end_index = 12*end_date.year + end_date.month
+    start_index = 12 * start_date.year + start_date.month
+    end_index = 12 * end_date.year + end_date.month
     for index in range(start_index, end_index):
         month = (index - 1) % 12 + 1
         year = (index - 1) / 12
@@ -449,14 +449,12 @@ def moving_average(to_date, sorted_cashflows, size):
 
 class CompanyDetail(models.Model):
     companyname = models.CharField(max_length=255)
-    address =models.CharField(max_length=255)
-    town =models.CharField(max_length=120)
+    address = models.CharField(max_length=255)
+    town = models.CharField(max_length=120)
     admincontact = models.IntegerField()
-    staffcontact= models.IntegerField()
+    staffcontact = models.IntegerField()
     ownercontact = models.IntegerField()
     emailaddress = models.EmailField()
 
     def __str__(self):
-         return u"{} - {}".format(self.companyname, self.address)
-
-
+        return u"{} - {}".format(self.companyname, self.address)

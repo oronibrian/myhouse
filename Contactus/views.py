@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 import datetime
+
+from Contactus.models import CustomerRequests
 from MainSystem.models import CompanyDetail
 # Create your views here.
 def ContactUs(request):
@@ -23,3 +25,21 @@ def ContactUs(request):
    }
 
    return HttpResponse(template.render(context, request))
+
+
+def SendRequest(request):
+    if request.method=='POST':
+        email= request.POST['email']
+        name= request.POST['name']
+        subject= request.POST['subject']
+        message = request.POST['message']
+
+        CustomerRequests.objects.create(
+            email=email,
+            name =name,
+            subject=subject,
+            message = message
+
+        )
+
+        return HttpResponse("")

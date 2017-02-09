@@ -7,8 +7,8 @@ from django.http import HttpResponse
 from django.core.mail import mail_admins
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 
-from MainSystem.AllSerializers import BuildingSerializer, PropertySerializer, TenantSerializer
-from .models import Building, Property, Tenant
+from MainSystem.AllSerializers import BuildingSerializer, PropertySerializer, TenantSerializer, CompanyDetailSerializer
+from .models import Building, Property, Tenant, CompanyDetail
 
 # Create your views here.
 from MainSystem.models import Building
@@ -70,3 +70,14 @@ class TenantListApiView(ListAPIView):
 class DetailedTenantApiView(RetrieveAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
+
+
+#this is for the api view of all Company details data
+class CompanyDetailListApiView(ListAPIView):
+    queryset = CompanyDetail.objects.all()
+    serializer_class = CompanyDetailSerializer
+
+
+class DetailedTCompanyDetailApiView(RetrieveAPIView):
+    queryset = CompanyDetail.objects.all()
+    serializer_class = CompanyDetailSerializer

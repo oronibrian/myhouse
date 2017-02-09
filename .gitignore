@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/dataSources/dc420397-9cc9-4106-82ca-af1b8a447844/_src_/
+.idea/dataSources/dc420397-9cc9-4106-82ca-af1b8a447844/_staging_/
+Contactus/migrations/0002_auto_20170201_0858.py
+Contactus/migrations/0002_auto_20170201_0858.pyc
+MainSystem/AllSerializers.pyc
+MainSystem/migrations/0002_remove_tenant_notes.py
+MainSystem/migrations/0002_remove_tenant_notes.pyc
+MainSystem/static/basepagestatics/img/logo.jpe
+Vacancy/forms.pyc
+Vacancy/migrations/0003_vacancy_picture.py
+Vacancy/migrations/0003_vacancy_picture.pyc
+Vacancy/migrations/0004_booking.py
+Vacancy/migrations/0004_booking.pyc
+Vacancy/migrations/0005_auto_20170201_0858.py
+Vacancy/migrations/0005_auto_20170201_0858.pyc
+Vacancy/vacancyserializer.pyc
+pictures/

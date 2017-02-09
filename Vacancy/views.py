@@ -5,8 +5,12 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.template import loader
 from django.http import HttpResponse
-from Vacancy.models import Vacancy
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+
+from Vacancy.models import Vacancy, Booking
 import datetime
+
+from Vacancy.vacancyserializer import VacancySerializer, BookingSerializer
 from .forms import BookingForm
 
 
@@ -39,3 +43,25 @@ def booking(request):
         form = BookingForm()
 
     return render(request, 'Vacancy/booking.html', {'form': form})
+
+
+# this is for the api view of all Vacancy details data
+class VacancyListApiView(ListAPIView):
+    queryset = Vacancy.objects.all()
+    serializer_class = VacancySerializer
+
+
+class DetailedVacancyDetailApiView(RetrieveAPIView):
+    queryset = Vacancy.objects.all()
+    serializer_class = VacancySerializer
+
+
+# this is for the api view of all Booking details data
+class BookingListApiView(ListAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+
+
+class DetailedBookingyDetailApiView(RetrieveAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer

@@ -14,4 +14,7 @@ urlpatterns = [
     url(r'tenant_api/$', views.TenantListApiView.as_view(), name='tenantlist'),
     url(r'tenant_api/(?P<pk>\d+)/$', views.DetailedTenantApiView.as_view(), name='tenetdetailed'),
 
+    url(r'company_detail_api/$', views.CompanyDetailListApiView.as_view(), name='companylist'),
+    url(r'company_detail_api/(?P<pk>\d+)/$', views.DetailedTCompanyDetailApiView.as_view(), name='companydetailed'),
+
 ]

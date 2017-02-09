@@ -20,6 +20,16 @@
       </div>
     </div>
 
+                  <div id="slider">
+                      <ul class="slides">
+                          <li class="slide"><img src=" {% static 'img/house.png' %}" width="110" height="10"  alt="House" style="width:100%"></li>
+                          <li class="slide"><img src=" {% static 'img/house2.jpg' %}" width="110" height="10"  alt="House" style="width:100%"></li>
+                          <li class="slide"><img src=" {% static 'img/house2.jpg' %}" width=1"10" height="10"  alt="House" style="width:100%"></li>
+
+                      </ul>
+                  </div>
+
+
 
   </section>
 
@@ -72,6 +82,34 @@
 
         </div>
       </article>
+
+     <script src="{% static 'jQuery/js/jquery.min.js' %}"></script>
+
+
+    <script type="text/javascript">
+        var currentslide=1;
+        var $slider =$('#slider');
+        var $slidecontainer=$slider.find('.slides');
+        var $slides =$slidecontainer.find('.slide')
+        
+        $(function () {
+             setInterval(function () {
+              $slidecontainer.animate({'margin-left': '-=1500px'},1000, function () {
+                  currentslide++;
+                  if(currentslide === $slides.length){
+                      currentslide=1;
+                      $slidecontainer.css('margin-left',0);
+                  }
+
+
+              });
+        },3000);
+
+        });
+
+
+    </script>
+
 
     </main>
 
